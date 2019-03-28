@@ -115,7 +115,7 @@
       [...darkText].forEach(a => updateStyle(a, 'darkText', { color: TEXT_COLOR_DARK}));
       const links = document.querySelectorAll('a:not(.Af4up)');
       [...links].forEach(a => updateStyle(a, 'links', { textDecoration: 'underline'}));
-      const text = document.querySelectorAll('h1, h2, h3, h4, h5, h6, td, a:not([data-test="lingot-store-button"]):not(._3sWvR), p, ul:not(._1ZY-H):not(._1XE6M)>li:not(._1Eh9P), ol>li');
+      const text = document.querySelectorAll('h1, h2, h3, h4, h5, h6, td, a:not([data-test="lingot-store-button"]):not(._3sWvR), p, ul:not(._1ZY-H):not(._1XE6M)>li:not(._1Eh9P):not(._1CkMd), ol>li');
       [...text].forEach(a => updateStyle(a, 'text', { color: TEXT_COLOR}));
     });
 
