@@ -73,6 +73,7 @@
   const updateStories = () => {
     // update stories.duolingo.com
     const storyGrid = document.querySelectorAll('.story-grid');
+    const storyHeader = document.querySelectorAll('.stories-header');
     const storySet = document.querySelectorAll('.story-grid .set');
     const storySetHeader = document.querySelectorAll(
       '.story-grid .set .set-header',
@@ -92,6 +93,12 @@
       // console.log('------ updateStories ------');
       [...storyGrid].forEach(a =>
         updateStyle(a, 'storyGrid', {backgroundColor: LIGHT_COLOR}),
+      );
+      [...storyHeader].forEach(a =>
+        updateStyle(a, 'storyHeader', {
+          backgroundColor: DARK_COLOR,
+          color: TEXT_COLOR,
+        }),
       );
       [...storySet].forEach(a =>
         updateStyle(a, 'storySet', {backgroundColor: DARK_COLOR}),
