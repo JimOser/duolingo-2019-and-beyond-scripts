@@ -212,6 +212,24 @@
     );
   };
 
+  const updateCrowns = () => {
+    // https://www.duolingo.com/
+    // April 1, 2019 joke
+    // Updates # of crowns to 999
+    var crowns = document.querySelectorAll("div.aFqnr._1E3L7._1kQ6y._3QZJ_ , ._2eJB1");
+    if (crowns && crowns.length > 0) {
+      console.debug(crowns[0]);
+      crowns[0].innerText = "999" ;
+      console.debug(crowns[0]);
+      console.debug(crowns[0].innerText);
+    } 
+    var crownBox = document.querySelectorAll("div.aFqnr._1E3L7");
+    var crownJustTheWord = document.querySelectorAll("div.aFqnr._1E3L7 h2");
+    if (crownJustTheWord && crownBox && crownJustTheWord.length > 0 && crownBox.length > 0) {
+      crownBox[0].style.backgroundColor = DARK_COLOR;
+      crownJustTheWord[0].style.color = "white";
+    }
+  };
   // eslint-disable-next-line no-unused-vars
   const observer = new MutationObserver((mutations, mutationObserver) => {
     // I really don't like using these automagically generated class names :-/
@@ -242,6 +260,12 @@
     console.debug(window.location.href);
     console.debug(mutations);
     console.debug(mutationObserver);
+    
+    // https://www.duolingo.com/
+    // April 1, 2019 joke
+    // Updates # of crowns to 999
+    updateCrowns();
+
     const tips = document.querySelectorAll('._1TgLl._1E3L7');
     [...tips].forEach(a =>
       updateStyle(a, 'tips', {backgroundColor: DARK_COLOR}),
@@ -263,7 +287,7 @@
     if (updateSubmitABugReport()) return;
 
     if (updateWordsTable()) return;
-
+    
     // console.debug('------updating all------');
     updateElementsLightColor();
     updateElementsDarkColor();
