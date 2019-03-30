@@ -15,3 +15,11 @@ George wrote:
 > Tested in my personal account so it may not work in other accounts
 
 > due to A/B testing, new updates or it may even have a bug :)
+
+Jim Oser writes:
+
+Tested with:
+
+* Mac 10.11.12
+* Chrome browser Version 73.0.3683.86 (Official Build) (64-bit)
+* Violent Monkey v2.10.3
