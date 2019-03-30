@@ -124,7 +124,7 @@
       '.phrase, .synced-text, .answer, .challenge-question, .story-end-section, .title.completed',
     );
     const storyTextDark = document.querySelectorAll(
-      '.point-to-phrase-synced-text.highlighted',
+      '.point-to-phrase-synced-text.highlighted, .phrase-bank>span',
     );
 
     if (storyContainer && storyContainer.length > 0) {
