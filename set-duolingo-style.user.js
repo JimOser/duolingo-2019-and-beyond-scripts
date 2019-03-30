@@ -39,7 +39,7 @@
     const skillTree = document.querySelectorAll("[data-test='skill-tree']");
     const update = skillTree && skillTree.length > 0;
     if (update) {
-      // console.log('------ updateSkillTree ------');
+      // console.debug('------ updateSkillTree ------');
       [...skillTree].forEach(a =>
         updateStyle(a, "[data-test='skill-tree']", {
           backgroundColor: LIGHT_COLOR,
@@ -58,7 +58,7 @@
       return skillExercise && skillExercise.length > 0;
     };
     if (hasExercise()) {
-      // console.log('------ updateSkillTreeExercise ------');
+      // console.debug('------ updateSkillTreeExercise ------');
       [...document.querySelectorAll('div')].forEach(a =>
         updateStyle(a, 'div', {backgroundColor: DARK_COLOR, color: TEXT_COLOR}),
       );
@@ -90,7 +90,7 @@
     };
 
     if (hasStories()) {
-      // console.log('------ updateStories ------');
+      // console.debug('------ updateStories ------');
       [...storyGrid].forEach(a =>
         updateStyle(a, 'storyGrid', {backgroundColor: LIGHT_COLOR}),
       );
@@ -128,7 +128,7 @@
     );
 
     if (storyContainer && storyContainer.length > 0) {
-      // console.log('------ updateStory ------');
+      // console.debug('------ updateStory ------');
       [...storyContainer].forEach(a =>
         updateStyle(a, 'storyContainer', {
           backgroundColor: DARK_COLOR,
@@ -152,7 +152,7 @@
   const updateSubmitABugReport = () => {
     const main = document.querySelectorAll('main[role="main"]');
     if (main && main.length > 0) {
-      // console.log('------ updateSubmitABugReport ------');
+      // console.debug('------ updateSubmitABugReport ------');
       [...main].forEach(a =>
         updateStyle(a, 'main', {
           backgroundColor: DARK_COLOR,
@@ -216,9 +216,32 @@
   const observer = new MutationObserver((mutations, mutationObserver) => {
     // I really don't like using these automagically generated class names :-/
 
+    // https://www.youtube.com/watch?v=Hn2zzi_lquA
+    // JavaScript Mutation Observer
+    // Kyle Robinson Young
+    // https://github.com/shama/letswritecode/tree/master/javascript-mutation-observer
+    mutations.forEach(function (mutation) {
+      var i;
+      if (mutation.addedNodes.length) {
+        for(i=0; i<mutation.addedNodes.length; i++){
+          console.debug('Added', mutation.addedNodes[i])
+	}
+      }
+      if (mutation.removedNodes.length) {
+        for(i=0; i<mutation.removedNodes.length; i++){
+          console.debug('Removed', mutation.removedNodes[i])
+	}
+      }
+    })
+
     /* Using a single background color */
     updateDocumentBody(DARK_COLOR);
 
+    console.debug(Date());
+    console.debug("Hello World");
+    console.debug(window.location.href);
+    console.debug(mutations);
+    console.debug(mutationObserver);
     const tips = document.querySelectorAll('._1TgLl._1E3L7');
     [...tips].forEach(a =>
       updateStyle(a, 'tips', {backgroundColor: DARK_COLOR}),
@@ -241,7 +264,7 @@
 
     if (updateWordsTable()) return;
 
-    // console.log('------updating all------');
+    // console.debug('------updating all------');
     updateElementsLightColor();
     updateElementsDarkColor();
   });
