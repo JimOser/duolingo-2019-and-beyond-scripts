@@ -13,7 +13,7 @@
   // Tested in my personal account so it may not work in other accounts
   // due to A/B testing, new updates or it may even have a bug :)
 
-  // --------- Change the values here  for different colors ---------
+  // --------- Change the values here for different colors ---------
   // Note: color values are in hex ( https://htmlcolorcodes.com )
   const DARK_COLOR_VALUE = '3f2b96';
   const LIGHT_COLOR_VALUE = '3AABB8';
@@ -166,6 +166,26 @@
     return false;
   };
 
+  const updateWordsTable = () => {
+    // https://www.duolingo.com/words
+    const words = document.querySelectorAll('._3zjVe');
+    if (words && words.length > 0) {
+      [...words].forEach(a =>
+        updateStyle(a, 'words table', {backgroundColor: DARK_COLOR}),
+      );
+      const title = document.querySelectorAll('._3zjVe h1');
+      [...title].forEach(a =>
+        updateStyle(a, 'words title', {color: TEXT_COLOR}),
+      );
+      const cell = document.querySelectorAll('tr.VjtrX>td');
+      [...cell].forEach(a => updateStyle(a, 'words cell', {color: TEXT_COLOR}));
+      const info = document.querySelectorAll('.NYMhm h2, ._3Io2c');
+      [...info].forEach(a => updateStyle(a, 'words info', {color: TEXT_COLOR}));
+      return true;
+    }
+    return false;
+  };
+
   const updateElementsLightColor = () => {
     const x1 = '.Af4up';
     const links = document.querySelectorAll(`a:not(${x1})`);
@@ -175,8 +195,10 @@
 
     const forum = '._1RSpr'; // subscriptions
     const forumRelatedDiscussions = '._1y1Vb';
-    const el = `h1, h2:not(${forum}), h3, h4, h5, h6, td, p`;
-    const elA = `a:not([data-test="lingot-store-button"]):not(${forumRelatedDiscussions}):not(._3sWvR)`;
+    const userInNotificationsPopup = '[rel="nofollow"]';
+    const titleInNotificationsPopup = '.Rl0dL';
+    const el = `h1:not(${titleInNotificationsPopup}), h2:not(${forum}), h3, h4, h5, h6, td, p`;
+    const elA = `a:not([data-test="lingot-store-button"]):not(${forumRelatedDiscussions}):not(${userInNotificationsPopup}):not(._3sWvR)`;
     const elUl = 'ul:not(._1ZY-H):not(._1XE6M)>li:not(._1Eh9P):not(._1CkMd)';
     const elOl = 'ol>li';
     const text = document.querySelectorAll(`${el},${elA},${elUl},${elOl}`);
@@ -190,6 +212,7 @@
     );
   };
 
+  // eslint-disable-next-line no-unused-vars
   const observer = new MutationObserver((mutations, mutationObserver) => {
     // I really don't like using these automagically generated class names :-/
 
@@ -206,15 +229,17 @@
       updateStyle(a, 'store', {backgroundColor: DARK_COLOR}),
     );
 
-    if (updateSkillTreeExercise(mutations, mutationObserver)) return;
+    if (updateSkillTreeExercise()) return;
 
-    if (updateSkillTree(mutations, mutationObserver)) return;
+    if (updateSkillTree()) return;
 
-    if (updateStory(mutations, mutationObserver)) return;
+    if (updateStory()) return;
 
-    if (updateStories(mutations, mutationObserver)) return;
+    if (updateStories()) return;
 
-    if (updateSubmitABugReport(mutations, mutationObserver)) return;
+    if (updateSubmitABugReport()) return;
+
+    if (updateWordsTable()) return;
 
     // console.log('------updating all------');
     updateElementsLightColor();
