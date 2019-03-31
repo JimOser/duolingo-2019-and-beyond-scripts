@@ -222,6 +222,17 @@
     }
   }
 
+  const goodbyeForumAdvertisement  = () => {
+    // https://forum.duolingo.com/
+    // Get rid of advertisement on the forum page
+    var forumAdvertisement = document.querySelectorAll("div.div.div , ._1RSpr");
+    console.debug(forumAdvertisement);
+    if (forumAdvertisement && forumAdvertisement.length > 0) {
+      // Keep forumAdvertisement[0] that's the list of forums that you are subscribed to.
+      forumAdvertisement[1].remove();
+    }
+  }
+
   const updateCrowns = () => {
     // https://www.duolingo.com/
     // April 1, 2019 joke
@@ -277,7 +288,15 @@
     updateCrowns();
 
     // Get rid of the advertisement on the home page www.duolingo.com
-    goodbyeHomeAdvertisement();
+    // googletagmanager.com errors
+
+    // goodbyeHomeAdvertisement();
+
+    // Get rid of the advertisement on the discussion page forum.duolingo.com
+    // googletagmanager.com errors
+
+    // goodbyeForumAdvertisement();
+
     const tips = document.querySelectorAll('._1TgLl._1E3L7');
     [...tips].forEach(a =>
       updateStyle(a, 'tips', {backgroundColor: DARK_COLOR}),
