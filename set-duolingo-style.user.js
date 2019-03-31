@@ -212,6 +212,16 @@
     );
   };
 
+  const goodbyeHomeAdvertisement  = () => {
+    // https://www.duolingo.com/
+    // Get rid of advertisement on the home page
+    var homeAdvertisement = document.querySelectorAll("div.-X3R5._25sFh");
+    console.debug(homeAdvertisement);
+    if (homeAdvertisement && homeAdvertisement.length > 0) {
+      homeAdvertisement[0].remove();
+    }
+  }
+
   const updateCrowns = () => {
     // https://www.duolingo.com/
     // April 1, 2019 joke
@@ -266,6 +276,8 @@
     // Updates # of crowns to 999
     updateCrowns();
 
+    // Get rid of the advertisement on the home page www.duolingo.com
+    goodbyeHomeAdvertisement();
     const tips = document.querySelectorAll('._1TgLl._1E3L7');
     [...tips].forEach(a =>
       updateStyle(a, 'tips', {backgroundColor: DARK_COLOR}),
